@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 
 public class User_Home_Page extends javax.swing.JFrame {
-
+    int count = 0;
     int timeRun = 0;
     int day, month, year;
     Calendar cl = new GregorianCalendar();
@@ -526,6 +526,11 @@ public class User_Home_Page extends javax.swing.JFrame {
                     rs = st.executeQuery(query);
                     while(rs.next()){
                         textViewData.append(rs.getString("fileBody"));
+                        count = count + 1;
+                    }
+                    if (count < 1){
+                        JOptionPane.showMessageDialog(null, "The number you entered is out of range");
+                        textID.setText(null);
                     }
                     conn.close();
                     

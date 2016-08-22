@@ -5,14 +5,8 @@ import javax.crypto.spec.SecretKeySpec;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-
-
-/**
- *
- * @author USER
- */
 public class AESAlgorithm {
-    //
+    //Key in byte
     public static String algo = "AES";
     public byte[] keyValue;
     
@@ -35,8 +29,9 @@ public class AESAlgorithm {
         byte[] encVal = c.doFinal(msg.getBytes());
         String encryptedValue = new BASE64Encoder().encode(encVal);
         
+       // return encrypted data 
        return encryptedValue;
-    }
+    }//end of encryption function 
     
     // function for decrypting message
     public String decrypt(String msg) throws Exception{
@@ -47,10 +42,8 @@ public class AESAlgorithm {
         byte[] decValue = c.doFinal(decordedValue);
         String decryptedValue = new String(decValue);
         
+        // return decrypted data
         return decryptedValue;
         
-    }
-
-
-    
-}
+    }// end of decryption function
+}// end of AES class

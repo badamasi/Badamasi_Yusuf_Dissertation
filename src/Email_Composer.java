@@ -210,12 +210,12 @@ public class Email_Composer extends javax.swing.JFrame {
             String to = txtReceipient.getText();
 
             // Sender's email ID needs to be mentioned
-            String from = "danyusuf2211@gmail.com";
+            String from = "danyusuf2211@gmail.com";//Change accordingly
 
             final String username = "danyusuf2211@gmail.com";//change accordingly
             final String password = "bad12345";//change accordingly
 
-            // Assuming you are sending email through relay.jangosmtp.net
+            // sending email is through relay.jangosmtp.net
             // host = "smtp.gmail.com";
 
             Properties props = new Properties();
@@ -280,15 +280,13 @@ public class Email_Composer extends javax.swing.JFrame {
             txtReceipient.setText(null);
             txtSubject.setText(null);
             txtMessageBody.setText(null);
-        }catch(Exception ex){
+        }// end of try next is catch if error occur
+         catch(Exception ex){
             ex.printStackTrace();
-        }
-        
-        
-        
-        
-    }//GEN-LAST:event_buttonUploadTextActionPerformed
+        }// end of catch 
 
+    }//GEN-LAST:event_buttonUploadTextActionPerformed
+    // End of email compose function
     private void buttonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetActionPerformed
         // Reset the text field area
         txtMessageBody.setText(null);

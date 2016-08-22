@@ -17,9 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class UserPasswordUpdate extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UserPasswordUpdate
-     */
+    int count = 0;
     public UserPasswordUpdate() {
         initComponents();
     }
@@ -230,8 +228,13 @@ public class UserPasswordUpdate extends javax.swing.JFrame {
                     st.executeUpdate();
             
                     JOptionPane.showMessageDialog(null, "Password Updated successfully");
+                    count = count + 1;
                     textNewPassword.setText(null);
                     textConfirmNewPassword.setText(null);
+                    textOldPassword.setText(null);
+                }
+                if (count < 1){
+                    JOptionPane.showMessageDialog(null, "The password entered is not valid");
                     textOldPassword.setText(null);
                 }
                 conn.close();

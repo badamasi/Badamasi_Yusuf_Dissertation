@@ -357,6 +357,11 @@ public class UpdateUserRecord extends javax.swing.JFrame {
                 st.executeUpdate();
             
                 JOptionPane.showMessageDialog(null, "Record Updated successfully");
+                // Email composer source code
+                String sub = "Record Update";
+                String text = "Your record updated successfully";
+                EmailSender es = new EmailSender(textEmail.getText(), sub, text);
+        
                 textPassword.setText(null);
                 textEmail.setText(null);
                 textPhone.setText(null);

@@ -25,10 +25,6 @@ public class Data_Security extends javax.swing.JFrame {
     //key for aes algorithm
     private byte[] keyValue = new byte[]{'T','h','e','B','e','s','t','S','e','c','r','y','p','t','i','o'};
      
-    
-    
-    
-     
     public Data_Security() {
         initComponents();
         
@@ -291,15 +287,19 @@ public class Data_Security extends javax.swing.JFrame {
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // Upload text to encrypt
+        // defined object of JFile Chooser
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
+        // Get file object
         File file = chooser.getSelectedFile();
+        // Get Absolute path of file
         String fileName = file.getAbsolutePath();
         
         try{
-            
+            // read the file name
             FileReader reader = new FileReader(fileName);
             BufferedReader bufferReader = new BufferedReader(reader);
+            // put the uploaded data in to text field provided for data encryption
             textEncrypt.read(bufferReader, null);
             bufferReader.close();
             textEncrypt.requestFocus();
@@ -308,16 +308,13 @@ public class Data_Security extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, ex);
         }
     }//GEN-LAST:event_btnUploadActionPerformed
-
+    // End of file upload function
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // Save text file
         JFileChooser fs = new JFileChooser(new File("C:\\"));
         fs.setDialogTitle("Save a File");
         fs.setFileFilter(new FileTypeFilter(".txt", "Text File"));
-        //fs.setFileFilter(new FileTypeFilter(".doc", "Word File"));
-        //fs.setFileFilter(new FileTypeFilter(".jpg", "JPEG File"));
-        //fs.setFileFilter(new FileTypeFilter(".docx", "Text File"));
-        //fs.setFileFilter(new FileTypeFilter(".png", "JPEG File"));
+        
         int result = fs.showSaveDialog(null);
         if (result == JFileChooser.APPROVE_OPTION){
             String content = textEncrypt.getText();
@@ -332,7 +329,7 @@ public class Data_Security extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-
+    // End of file save function
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // Reset text area field
         textEncrypt.setText(null);

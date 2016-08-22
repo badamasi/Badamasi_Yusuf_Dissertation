@@ -127,17 +127,21 @@ public class SecretKeyGenerator extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "error occured");
                 } 
     }//GEN-LAST:event_buttonSaveActionPerformed
+    //Declare array for secret key letter, digit and special character combination
     private char array[] = {'a','1','@','2','b','#','3','$','c','&','4',
         '%','d','5','?','e','6','+','f','7','#','g','8','h','@',
         '9','i','!','j','k','l','m','n','o','p','q','r','s','t','u',
         'v','w','x','y','z'};
    
+    //functoion to return Array data length
     private char getRandomCharacter(){
         return array[random(array.length)];
     }
+    //function to generate random key
     private int random(int length){
         return new Random().nextInt(length);
     }
+    // function that will determine key length
     protected void Engine(){
         boolean running = true;
         int count = 0;
@@ -152,11 +156,11 @@ public class SecretKeyGenerator extends javax.swing.JFrame {
             if(count++ == max){
                 running = false;
                 System.out.println("Finished: ");
-            }
+            }// end of if statement
             
-        }
+        }// end of while looping
         
-    }    
+    } // end of function Engine   
     
     public static void main(String args[]) {
        
