@@ -20,6 +20,7 @@ public class UserPasswordUpdate extends javax.swing.JFrame {
     int count = 0;
     public UserPasswordUpdate() {
         initComponents();
+        this.setLocation(400, 200);
     }
 
     /**

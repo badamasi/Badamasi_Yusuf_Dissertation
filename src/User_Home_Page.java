@@ -58,6 +58,7 @@ public class User_Home_Page extends javax.swing.JFrame {
                 
             }
         }.start();
+        this.setLocation(10, 50);
     }
 
     /**
@@ -552,7 +553,7 @@ public class User_Home_Page extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // Exit the entire system
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed

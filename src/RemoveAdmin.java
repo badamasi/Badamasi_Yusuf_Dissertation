@@ -22,6 +22,7 @@ public class RemoveAdmin extends javax.swing.JFrame {
      */
     public RemoveAdmin() {
         initComponents();
+        this.setLocation(350, 200);
     }
 
     /**

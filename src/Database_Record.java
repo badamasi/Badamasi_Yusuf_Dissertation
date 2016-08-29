@@ -26,6 +26,7 @@ public class Database_Record extends javax.swing.JFrame {
     public Database_Record() {
         initComponents();
         Show_Users_In_JTable();
+        this.setLocation(200, 100);
     }
     
     public Connection getConnection(){

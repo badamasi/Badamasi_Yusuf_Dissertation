@@ -17,6 +17,7 @@ public class New_User extends javax.swing.JFrame {
      */
     public New_User() {
         initComponents();
+        this.setLocation(250, 150);
     }
 
     /**

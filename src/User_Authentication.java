@@ -17,6 +17,7 @@ public class User_Authentication extends javax.swing.JFrame {
      */
     public User_Authentication() {
         initComponents();
+        this.setLocation(400, 200);
     }
 
     /**

@@ -18,6 +18,7 @@ public class Login_form extends javax.swing.JFrame {
     public Login_form() {
         //component initialization
         initComponents();
+        this.setLocation(200, 100);
         
         try{
             //get current day, month and year
@@ -794,7 +795,7 @@ public class Login_form extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // close the window
-        System.exit(0);
+       this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void textUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textUsernameActionPerformed

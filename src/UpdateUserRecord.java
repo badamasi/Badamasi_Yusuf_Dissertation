@@ -21,6 +21,7 @@ public class UpdateUserRecord extends javax.swing.JFrame {
     String pass = null;
     public UpdateUserRecord() {
         initComponents();
+        this.setLocation(300, 100);
     }
 
     /**

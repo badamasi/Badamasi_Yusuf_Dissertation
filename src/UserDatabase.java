@@ -19,6 +19,7 @@ public class UserDatabase extends javax.swing.JFrame {
     public UserDatabase() {
         initComponents();
         Show_Users_In_JTable();
+        this.setLocation(200, 100);
     }
     
     public Connection getConnection(){

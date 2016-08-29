@@ -26,6 +26,7 @@ public class UploadImage extends javax.swing.JFrame {
      */
     public UploadImage() {
         initComponents();
+        this.setLocation(200, 100);
     }
 
     /**

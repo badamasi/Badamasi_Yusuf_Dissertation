@@ -27,6 +27,7 @@ public class Data_Security extends javax.swing.JFrame {
      
     public Data_Security() {
         initComponents();
+        this.setLocation(300, 100);
         
         // pass the algorithm secrete key
         aesAlgo = new AESAlgorithm(keyValue);

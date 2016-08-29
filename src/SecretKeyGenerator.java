@@ -9,6 +9,7 @@ public class SecretKeyGenerator extends javax.swing.JFrame {
     public SecretKeyGenerator() {
         initComponents();
         Engine();
+        this.setLocation(400, 200);
     }
 
     

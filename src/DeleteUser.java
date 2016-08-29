@@ -19,6 +19,7 @@ public class DeleteUser extends javax.swing.JFrame {
      */
     public DeleteUser() {
         initComponents();
+        this.setLocation(400, 200);
         
         
     }

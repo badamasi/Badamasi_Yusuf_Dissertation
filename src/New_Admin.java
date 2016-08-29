@@ -21,6 +21,7 @@ public class New_Admin extends javax.swing.JFrame {
      */
     public New_Admin() {
         initComponents();
+        this.setLocation(300, 150);
     }
 
     /**

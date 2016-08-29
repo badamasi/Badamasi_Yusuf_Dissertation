@@ -15,6 +15,7 @@ public class Request_Database extends javax.swing.JFrame {
     public Request_Database() {
         initComponents();
         Show_Users_In_JTable();
+        this.setLocation(200, 100);
     }
     public Connection getConnection(){
         Connection conn;

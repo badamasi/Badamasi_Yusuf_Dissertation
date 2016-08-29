@@ -58,7 +58,7 @@ public class Server extends javax.swing.JFrame {
             }
         }.start();
         
-        
+        this.setLocation(70, 50);
     }
 
     /**
@@ -97,8 +97,8 @@ public class Server extends javax.swing.JFrame {
         labelDate = new javax.swing.JLabel();
         labelTime = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonLogout = new javax.swing.JButton();
+        buttonExit = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
@@ -383,21 +383,21 @@ public class Server extends javax.swing.JFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Close window", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 0, 102))); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 153));
-        jButton1.setText("Logout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buttonLogout.setForeground(new java.awt.Color(0, 0, 153));
+        buttonLogout.setText("Logout");
+        buttonLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonLogoutActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 153));
-        jButton2.setText("Exit system");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonExit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        buttonExit.setForeground(new java.awt.Color(0, 0, 153));
+        buttonExit.setText("Exit system");
+        buttonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonExitActionPerformed(evt);
             }
         });
 
@@ -408,17 +408,17 @@ public class Server extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(buttonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonExit))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(buttonLogout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(buttonExit)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -943,17 +943,17 @@ public class Server extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSaveAspdfActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
         //Exit the system 
-        System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_buttonExitActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
         // Logout from the system
         Login_form log = new Login_form();
         log.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonLogoutActionPerformed
 
     private void btnFileSecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileSecurityActionPerformed
         // File security page
@@ -1062,8 +1062,8 @@ public class Server extends javax.swing.JFrame {
     private javax.swing.JButton btnViewDatabase;
     private javax.swing.JButton btnViewUserDetail;
     private javax.swing.JButton btnViewUserRecord;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton buttonExit;
+    private javax.swing.JButton buttonLogout;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

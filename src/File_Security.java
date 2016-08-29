@@ -27,6 +27,7 @@ public class File_Security extends javax.swing.JFrame {
         initComponents();
         // pass the algorithm secrete key
         aesAlgo = new AESAlgorithm(keyValue);
+        this.setLocation(200, 100);
     }
 
     /**

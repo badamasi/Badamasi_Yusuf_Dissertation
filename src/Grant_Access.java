@@ -23,6 +23,7 @@ public class Grant_Access extends javax.swing.JFrame {
      */
     public Grant_Access() {
         initComponents();
+        this.setLocation(400, 200);
     }
 
     /**
