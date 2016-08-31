@@ -326,19 +326,26 @@ public class File_Security extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File file = chooser.getSelectedFile();
-        String fileName = file.getAbsolutePath();
-        
-        try{
-            
-            FileReader reader = new FileReader(fileName);
-            BufferedReader bufferReader = new BufferedReader(reader);
-            txtEncrypt.read(bufferReader, null);
-            bufferReader.close();
-            txtEncrypt.requestFocus();
-            
-        }catch(Exception ex){
-              JOptionPane.showMessageDialog(null, ex);
+        double bytes = file.length();
+        if (bytes > 2000){
+                JOptionPane.showMessageDialog(null, "File size is too much");
         }
+        else{
+            String fileName = file.getAbsolutePath();
+        
+            try{
+            
+                FileReader reader = new FileReader(fileName);
+                BufferedReader bufferReader = new BufferedReader(reader);
+                txtEncrypt.read(bufferReader, null);
+                bufferReader.close();
+                txtEncrypt.requestFocus();
+            
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnUploadforDecryptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadforDecryptActionPerformed
@@ -346,19 +353,26 @@ public class File_Security extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File file = chooser.getSelectedFile();
-        String fileName = file.getAbsolutePath();
-        
-        try{
-            
-            FileReader reader = new FileReader(fileName);
-            BufferedReader bufferReader = new BufferedReader(reader);
-            txtDecrypt.read(bufferReader, null);
-            bufferReader.close();
-            txtDecrypt.requestFocus();
-            
-        }catch(Exception ex){
-              JOptionPane.showMessageDialog(null, ex);
+        double bytes = file.length();
+        if (bytes > 2000){
+                JOptionPane.showMessageDialog(null, "File size is too much");
         }
+        else{
+            String fileName = file.getAbsolutePath();
+        
+            try{
+            
+                FileReader reader = new FileReader(fileName);
+                BufferedReader bufferReader = new BufferedReader(reader);
+                txtDecrypt.read(bufferReader, null);
+                bufferReader.close();
+                txtDecrypt.requestFocus();
+            
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        
         
     }//GEN-LAST:event_btnUploadforDecryptActionPerformed
 

@@ -294,20 +294,27 @@ public class Data_Security extends javax.swing.JFrame {
         // Get file object
         File file = chooser.getSelectedFile();
         // Get Absolute path of file
-        String fileName = file.getAbsolutePath();
-        
-        try{
-            // read the file name
-            FileReader reader = new FileReader(fileName);
-            BufferedReader bufferReader = new BufferedReader(reader);
-            // put the uploaded data in to text field provided for data encryption
-            textEncrypt.read(bufferReader, null);
-            bufferReader.close();
-            textEncrypt.requestFocus();
-            
-        }catch(Exception ex){
-              JOptionPane.showMessageDialog(null, ex);
+        //String fileName = file.getAbsolutePath();
+        double bytes = file.length();
+        if (bytes > 2000){
+                JOptionPane.showMessageDialog(null, "File size is too much");
         }
+        else{
+            String fileName = file.getAbsolutePath();
+            try{
+                // read the file name
+                FileReader reader = new FileReader(fileName);
+                BufferedReader bufferReader = new BufferedReader(reader);
+                // put the uploaded data in to text field provided for data encryption
+                textEncrypt.read(bufferReader, null);
+                bufferReader.close();
+                textEncrypt.requestFocus();
+            
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        
     }//GEN-LAST:event_btnUploadActionPerformed
     // End of file upload function
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -348,19 +355,26 @@ public class Data_Security extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File file = chooser.getSelectedFile();
-        String fileName = file.getAbsolutePath();
-        
-        try{
-            
-            FileReader reader = new FileReader(fileName);
-            BufferedReader bufferReader = new BufferedReader(reader);
-            textDecrypt.read(bufferReader, null);
-            bufferReader.close();
-            textDecrypt.requestFocus();
-            
-        }catch(Exception ex){
-              JOptionPane.showMessageDialog(null, ex);
+        double bytes = file.length();
+        if (bytes > 2000){
+                JOptionPane.showMessageDialog(null, "File size is too much");
         }
+        else{
+            String fileName = file.getAbsolutePath();
+        
+            try{
+            
+                FileReader reader = new FileReader(fileName);
+                BufferedReader bufferReader = new BufferedReader(reader);
+                textDecrypt.read(bufferReader, null);
+                bufferReader.close();
+                textDecrypt.requestFocus();
+            
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
