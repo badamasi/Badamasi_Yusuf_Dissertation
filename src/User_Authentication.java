@@ -9,6 +9,10 @@
  * @author USER
  */
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.*;
 public class User_Authentication extends javax.swing.JFrame {
 
@@ -133,19 +137,57 @@ public class User_Authentication extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         // Authntication code
-        if(txtKey.getText().equals("abcdef1234567")){
-            JOptionPane.showMessageDialog(null, "Welcome, enjoy the service");
-            Server server = new Server();
-            server.setVisible(true);
-            
-            this.dispose();
+        //Get object for database connection and data retrieval
+        Connection conn;
+        String user = null;
+        String pass = null;
+        ResultSet result = null;
+        Statement statement = null;
+        int count = 0;
+        // Variable declaration to hold username and password entered by users
+        
+ 
+        try{
+            //Get connection
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloud_data_security", 
+                        "root", "");
+            // set and execute query
+                String query = "SELECT * FROM secret_key";
+                statement = conn.createStatement();
+                result = statement.executeQuery(query);
+                 // check if there are more users in the database       
+                while(result.next()){
+                    String key1 = result.getString("user_key");
+                    if(txtKey.getText().equals(key1)){
+                        JOptionPane.showMessageDialog(null, "Welcome, enjoy the service");
+                        count = count + 1;
+                        Server server = new Server();
+                        server.setVisible(true);
+                         this.dispose();
+                    }
+                }
+                if(txtKey.getText().equals("abcdef1234567")){
+                    JOptionPane.showMessageDialog(null, "Welcome, enjoy the service");
+                    count = count + 1;
+                    Server server = new Server();
+                    server.setVisible(true);
+                    
+                    this.dispose();
+                }
+                if (count < 1){
+                    JOptionPane.showMessageDialog(null, "Invalid entry");
+                    Login_form log = new Login_form();
+                    log.setVisible(true);
+                    this.dispose();
+                }
+                result.close();
+                statement.close();
+                conn.close(); 
+        }catch(Exception ex){
+            ex.printStackTrace();
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Invalid entry");
-            Login_form log = new Login_form();
-            log.setVisible(true);
-            this.dispose();
-        }
+        
     }//GEN-LAST:event_btnEnterActionPerformed
 
     /**
