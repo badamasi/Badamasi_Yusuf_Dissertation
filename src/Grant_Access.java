@@ -27,8 +27,8 @@ public class Grant_Access extends javax.swing.JFrame {
     }
 
     //Declare array for secret key letter, digit and special character combination
-    private char array[] = {'a','1','@','2','b','#','3','$','c','&','4',
-        '%','d','5','?','e','6','+','f','7','#','g','8','h','@',
+    private char array[] = {'a','1','A','@','2','b','#','B','3','$','c','&','C','4',
+        '%','d','5','D','?','E','e','6','E','+','f','7','#','F','g','8','h','@','G',
         '9','i','!','j','k','l','m','n','o','p','q','r','s','t','u',
         'v','w','x','y','z'};
    
@@ -168,7 +168,9 @@ public class Grant_Access extends javax.swing.JFrame {
     private void buttonGrantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGrantActionPerformed
         // Grant new user acess
         // Remove admin record
+        int count = 0;
         String firstname, lastname, password, nationality, email, mobile, gender, address;
+        String name, password1, email1, mobile1, gender1;
         firstname = null;
         lastname = null;
         password = null;
@@ -177,6 +179,12 @@ public class Grant_Access extends javax.swing.JFrame {
         mobile = null;
         gender = null;
         address = null;
+        name = null;
+        password1 = null;
+        email1 = null;
+        mobile1 = null;
+        gender1 = null;
+        
         String num = textId.getText();
         int res = Integer.parseInt(num);
         try{
@@ -218,41 +226,71 @@ public class Grant_Access extends javax.swing.JFrame {
     		JOptionPane.showMessageDialog(null, "error occured");
     	} 
         try{
-                Connection conn;
-    		Class.forName("com.mysql.jdbc.Driver");
-    		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloud_data_security", "root", "");
+            Connection conn;
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloud_data_security", "root", "");
                 // set query
-                String query = "INSERT INTO cloud_users(id, name, email_id, phone_number, password, gender, nationality, address ) VALUES(?,?,?,?,?,?,?,?)";
-                PreparedStatement st = conn.prepareStatement(query);
-    		st.setString(1, null);
-    		st.setString(2, firstname + " " + lastname);
-    		st.setString(3, email);
-    		st.setString(4, mobile);
-                st.setString(5, password);
-    		st.setString(6, gender);
-                st.setString(7, nationality);
-    		st.setString(8, address);
-                st.execute();
-    		JOptionPane.showMessageDialog(null, "New user access granted");
-                // Email composer source code
-                String user = "Username: "+email;
-                String pass = "Password: "+password;
-                String key1 = "secret key: "+secretKey;
-                String subject = "Access granted";
-                EmailSender es = new EmailSender(email, subject, (user+System.lineSeparator()+pass+System.lineSeparator()+key1));
-                textId.setText(null);
-                String query1 = "INSERT INTO secret_key(id, user_key) VALUES(?,?)";
-                PreparedStatement st1 = conn.prepareStatement(query1);
-                st1.setString(1, null);
-                st1.setString(2, secretKey);
-                st1.execute();
-    		st.close();
-                st1.close();
-                conn.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
+            ResultSet rs = null;
+                Statement statement = null;
+    		String query1 = "SELECT * FROM cloud_users";
+                statement = conn.createStatement();
+                rs = statement.executeQuery(query1);
+                while(rs.next()){
+                    name = rs.getString("name");
+                    password1 = rs.getString("password");
+                    email1 = rs.getString("email_id");
+                    mobile1 = rs.getString("phone_number");
+                    gender1 = rs.getString("gender");
+                    if(name.equals(firstname + " " + lastname) && password1.equals(password) && mobile1.equals(mobile)
+                        && gender1.equals(gender)){
+                        count = count + 1;
+                        
+                    }
+                }
+                if(count > 0){
+                    JOptionPane.showMessageDialog(null, "Grant access failed! User exist already");
+                }
+                else{
+                    try{
+                        Connection conn1;
+                        Class.forName("com.mysql.jdbc.Driver");
+                        conn1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/cloud_data_security", "root", "");
+                        // set query
+                        String query = "INSERT INTO cloud_users(id, name, email_id, phone_number, password, gender, nationality, address ) VALUES(?,?,?,?,?,?,?,?)";
+                        PreparedStatement st = conn1.prepareStatement(query);
+                        st.setString(1, null);
+                        st.setString(2, firstname + " " + lastname);
+                        st.setString(3, email);
+                        st.setString(4, mobile);
+                        st.setString(5, password);
+                        st.setString(6, gender);
+                        st.setString(7, nationality);
+                        st.setString(8, address);
+                        st.execute();
+    		
+                        // Email composer source code
+                        String user = "Username: "+email;
+                        String pass = "Password: "+password;
+                        String key1 = "secret key: "+secretKey;
+                        String subject = "Access granted";
+                        EmailSender es = new EmailSender(email, subject, (user+System.lineSeparator()+pass+System.lineSeparator()+key1));
+                        textId.setText(null);
+                        String query2 = "INSERT INTO secret_key(id, user_key) VALUES(?,?)";
+                        PreparedStatement st1 = conn1.prepareStatement(query2);
+                        st1.setString(1, null);
+                        st1.setString(2, secretKey);
+                        st1.execute();
+                        JOptionPane.showMessageDialog(null, "New user access granted");
+                        st.close();
+                        st1.close();
+                        conn1.close();
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        } 
     }//GEN-LAST:event_buttonGrantActionPerformed
      
     /**

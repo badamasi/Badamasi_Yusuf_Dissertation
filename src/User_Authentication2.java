@@ -156,17 +156,16 @@ public class User_Authentication2 extends javax.swing.JFrame {
                     if(txtKey.getText().equals(key1)){
                         JOptionPane.showMessageDialog(null, "Welcome, enjoy the service");
                         count = count + 1;
-                        Server server = new Server();
-                        server.setVisible(true);
+                        User_Home_Page user1 = new User_Home_Page();
+                        user1.setVisible(true);
                          this.dispose();
                     }
                 }
                 if(txtKey.getText().equals("abcdef1234567")){
                     JOptionPane.showMessageDialog(null, "Welcome, enjoy the service");
                     count = count + 1;
-                    Server server = new Server();
-                    server.setVisible(true);
-                    
+                    User_Home_Page user1 = new User_Home_Page();
+                    user1.setVisible(true);
                     this.dispose();
                 }
                 if (count < 1){
